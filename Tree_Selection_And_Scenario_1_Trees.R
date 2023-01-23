@@ -3,7 +3,7 @@
 
 #Flow of the files: This file -> Scenario_1_Analysis -> Scenario_2_Analysis -> Scenario_3_Simulation_And_Analysis -> Scenario_4_Simulation_And_Analysis -> Final_Figures
 
-setwd("~/Desktop/PhD/TimeTreeData/NwkFiles")
+setwd()
 
 #Loading packages
 library('ctv')
