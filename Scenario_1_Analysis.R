@@ -2,7 +2,7 @@
 #To see the code for the final figures and PCA, see the Final_Figures file
 
 
-setwd("~/Desktop/PhD/TimeTreeData/NwkFiles")
+setwd()
 
 #Loading packages
 library('ctv')
