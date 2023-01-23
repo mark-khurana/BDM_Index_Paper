@@ -1,5 +1,5 @@
 #All final figures
-setwd("~/Desktop/PhD/TimeTreeData/NwkFiles")
+setwd()
 
 library('ctv')
 library('phytools')
