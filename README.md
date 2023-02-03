@@ -3,7 +3,7 @@
 This repo contains code to reproduce the simulations and figures of the "The departure between constant-rate birth-death and empirically inferred diversification processes".
 
 ## Environment setup:
-R version: xxx
+R version: 4.2.2
 
 The following libraries are used:
 ```R
