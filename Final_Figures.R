@@ -1,5 +1,5 @@
 #All final figures
-setwd()
+setwd("~/Desktop/PhD/TimeTreeData/NwkFiles")
 
 library('ctv')
 library('phytools')
@@ -169,9 +169,10 @@ plot1_wil <- ggplot(wilcoxon_distance_values, aes(x= reorder(name, abs(distance_
   theme(axis.title.x=element_text(size = 8), legend.position='none', axis.title.y=element_blank()) + labs(y="Difference between U Statistic and Expected U Value")
 plot1_wil
 #Dot plot for p-values
+#Setting the dotted line to be at p-value of 0.0015625, which is the Bonferroni-corrected p-value for 32 tests
 plot2_wil <- ggplot(wilcoxon_distance_values, aes(x=reorder(name, abs(distance_value-expectedU)), y=log(p_value))) + theme_classic() +
   geom_point(stat='identity', size=1.5, fill="#440154", colour="#440154") + coord_flip() + ylim(-350, 1) + 
-  ylab("Corresponding log (p-value)") + geom_hline(yintercept = -2, linetype="dashed", color = "#440154", size=0.5) +
+  ylab("Corresponding log (p-value)") + geom_hline(yintercept = -2.80617997398, linetype="dashed", color = "#440154", size=0.5) +
   theme(axis.title.x=element_text(size = 8), axis.title.y=element_blank(), legend.position='none', axis.text.y=element_blank())
 plot2_wil
 #combining into one figure
@@ -196,9 +197,10 @@ plot1_wil_nooutgroup <- ggplot(wilcoxon_distance_values_nooutgroup, aes(x= reord
   theme(axis.title.x=element_text(size = 8), legend.position='none', axis.title.y=element_blank()) + labs(y="Difference between U Statistic and Expected U Value")
 plot1_wil_nooutgroup
 #Dot plot for p-values
+#Setting the dotted line to be at p-value of 0.0015625, which is the Bonferroni-corrected p-value for 32 tests
 plot2_wil_nooutgroup <- ggplot(wilcoxon_distance_values_nooutgroup, aes(x=reorder(name, abs(distance_value-expectedU)), y=log(p_value))) + theme_classic() +
   geom_point(stat='identity', size=1.5, fill="#440154", colour="#440154") + coord_flip() + ylim(-350, 1) + 
-  ylab("Corresponding log (p-value)") + geom_hline(yintercept = -2, linetype="dashed", color = "#440154", size=0.5) +
+  ylab("Corresponding log (p-value)") + geom_hline(yintercept = -2.80617997398, linetype="dashed", color = "#440154", size=0.5) +
   theme(axis.title.x=element_text(size = 8), axis.title.y=element_blank(), legend.position='none', axis.text.y=element_blank())
 plot2_wil_nooutgroup
 #combining into one figure
@@ -223,9 +225,10 @@ plot1_wil_rho1 <- ggplot(wilcoxon_distance_values_rho1, aes(x= reorder(name, abs
   theme(axis.title.x=element_text(size = 8), legend.position='none', axis.title.y=element_blank()) + labs(y="Difference between U Statistic and Expected U Value")
 plot1_wil_rho1
 #Dot plot for p-values
+#Setting the dotted line to be at p-value of 0.0015625, which is the Bonferroni-corrected p-value for 32 tests
 plot2_wil_rho1 <- ggplot(wilcoxon_distance_values_rho1, aes(x=reorder(name, abs(distance_value-expectedU)), y=log(p_value))) + theme_classic() +
   geom_point(stat='identity', size=1.5, fill="#440154", colour="#440154") + coord_flip() + ylim(-350, 1) + 
-  ylab("Corresponding log (p-value)") + geom_hline(yintercept = -2, linetype="dashed", color = "#440154", size=0.5) +
+  ylab("Corresponding log (p-value)") + geom_hline(yintercept = -2.80617997398, linetype="dashed", color = "#440154", size=0.5) +
   theme(axis.title.x=element_text(size = 8), axis.title.y=element_blank(), legend.position='none', axis.text.y=element_blank())
 plot2_wil_rho1
 #combining into one figure
@@ -250,9 +253,10 @@ plot1_wil_yule <- ggplot(wilcoxon_distance_values_yule, aes(x= reorder(name, abs
   theme(axis.title.x=element_text(size = 8), legend.position='none', axis.title.y=element_blank()) + labs(y="Difference between U Statistic and Expected U Value")
 plot1_wil_yule
 #Dot plot for p-values
+#Setting the dotted line to be at p-value of 0.0015625, which is the Bonferroni-corrected p-value for 32 tests
 plot2_wil_yule <- ggplot(wilcoxon_distance_values_yule, aes(x=reorder(name, abs(distance_value-expectedU)), y=log(p_value))) + theme_classic() +
   geom_point(stat='identity', size=1.5, fill="#440154", colour="#440154") + coord_flip() + ylim(-350, 1) + 
-  ylab("Corresponding log (p-value)") + geom_hline(yintercept = -2, linetype="dashed", color = "#440154", size=0.5) +
+  ylab("Corresponding log (p-value)") + geom_hline(yintercept = -2.80617997398, linetype="dashed", color = "#440154", size=0.5) +
   theme(axis.title.x=element_text(size = 8), axis.title.y=element_blank(), legend.position='none', axis.text.y=element_blank())
 plot2_wil_yule
 #combining into one figure
@@ -670,14 +674,10 @@ hist_shortestpendant <- ggplot(zscoresdf, aes(x=shortestpendant)) + labs(y = "Co
 hist_stemminess <- ggplot(zscoresdf, aes(x=stemminess)) + labs(y = "Count", x = "Z-score", title="Non-Cumulative Stemminess") +  geom_histogram(aes(y=..count..),binwidth=0.1, color="#33638D", fill="#33638D") + xlim(-10, 10) + geom_vline(aes(xintercept=mean(stemminess)), color="#20A486", linetype="dashed", size=1)
 
 
-zhist_all <- list(hist_TotalI, hist_MeanI, hist_MedianI, hist_NormColless, hist_CollessLikeExpMDM, hist_I2, hist_NormSackin, 
-                  hist_TotalCophenetic, hist_B1, hist_B2, hist_AvgLeafDepth, hist_leafdepthvariance, hist_normcherry, hist_Jindex, hist_SNI, 
-                  hist_Sshape, hist_APP, hist_normILnumber, hist_normaverageladder,  hist_maxdepth, 
-                  hist_maxwidth, hist_maxdiffwidth, hist_meandepth, hist_maxheight,
-                  hist_normpitchforks, hist_rootedquartet, hist_stairs, hist_stairs2, hist_longestpendant,
-                  hist_shortestpendant, hist_stemminess)
-save(zhist_all, file="zscore_histograms.RData")
-load(file="zscore_histograms.RData")
+zhist_all <- list(hist_APP, hist_AvgLeafDepth, hist_B1, hist_B2, hist_CollessLikeExpMDM, hist_I2, hist_Jindex, hist_leafdepthvariance, hist_longestpendant, hist_maxdepth, 
+                  hist_maxdiffwidth, hist_maxwidth, hist_maxheight, hist_meandepth, hist_MeanI, hist_MedianI, hist_normaverageladder, 
+                  hist_normcherry, hist_NormColless, hist_normILnumber, hist_normpitchforks, hist_NormSackin, hist_rootedquartet, hist_shortestpendant, hist_SNI, 
+                  hist_Sshape, hist_stairs, hist_stairs2, hist_stemminess, hist_TotalCophenetic, hist_TotalI)
 ggsave(file="AllZscorePlots_Scenario1.pdf", marrangeGrob(grobs = zhist_all, nrow=4, ncol=3, top = "Z-scores for Scenario 1 Indices; Dotted Lines Denote the Sample Mean"), width = 9, height = 12,
        device = "pdf")
 
@@ -717,12 +717,10 @@ hist_shortestpendant <- ggplot(zscoresdf_nooutgroupdf, aes(x=shortestpendant)) +
 hist_stemminess <- ggplot(zscoresdf_nooutgroupdf, aes(x=stemminess)) + labs(y = "Count", x = "Z-score", title="Non-Cumulative Stemminess") +  geom_histogram(aes(y=..count..),binwidth=0.1, color="#33638D", fill="#33638D") + xlim(-10, 10) + geom_vline(aes(xintercept=mean(stemminess)), color="#20A486", linetype="dashed", size=1)
 
 
-zhist_all <- list(hist_TotalI, hist_MeanI, hist_MedianI, hist_NormColless, hist_CollessLikeExpMDM, hist_I2, hist_NormSackin, 
-                  hist_TotalCophenetic, hist_B1, hist_B2, hist_AvgLeafDepth, hist_leafdepthvariance, hist_normcherry, hist_Jindex, hist_SNI, 
-                  hist_Sshape, hist_APP, hist_normILnumber, hist_normaverageladder,  hist_maxdepth, 
-                  hist_maxwidth, hist_maxdiffwidth, hist_meandepth, hist_maxheight,
-                  hist_normpitchforks, hist_rootedquartet, hist_stairs, hist_stairs2,
-                  hist_shortestpendant, hist_stemminess)
+zhist_all <- list(hist_APP, hist_AvgLeafDepth, hist_B1, hist_B2, hist_CollessLikeExpMDM, hist_I2, hist_Jindex, hist_leafdepthvariance, hist_longestpendant, hist_maxdepth, 
+                  hist_maxdiffwidth, hist_maxwidth, hist_maxheight, hist_meandepth, hist_MeanI, hist_MedianI, hist_normaverageladder, 
+                  hist_normcherry, hist_NormColless, hist_normILnumber, hist_normpitchforks, hist_NormSackin, hist_rootedquartet, hist_shortestpendant, hist_SNI, 
+                  hist_Sshape, hist_stairs, hist_stairs2, hist_stemminess, hist_TotalCophenetic, hist_TotalI)
 ggsave(file="AllZscorePlots_Scenario2.pdf", marrangeGrob(grobs = zhist_all, nrow=4, ncol=3, top = "Z-scores for Scenario 2 Indices; Dotted Lines Denote the Sample Mean"), width = 9, height = 12,
        device = "pdf")
 
@@ -764,12 +762,10 @@ hist_shortestpendant <- ggplot(zscoresdf_rho1, aes(x=shortestpendant)) + labs(y 
 hist_stemminess <- ggplot(zscoresdf_rho1, aes(x=stemminess)) + labs(y = "Count", x = "Z-score", title="Non-Cumulative Stemminess") +  geom_histogram(aes(y=..count..),binwidth=0.1, color="#33638D", fill="#33638D") + xlim(-10, 10) + geom_vline(aes(xintercept=mean(stemminess)), color="#20A486", linetype="dashed", size=1)
 
 
-zhist_all <- list(hist_TotalI, hist_MeanI, hist_MedianI, hist_NormColless, hist_CollessLikeExpMDM, hist_I2, hist_NormSackin, 
-                  hist_TotalCophenetic, hist_B1, hist_B2, hist_AvgLeafDepth, hist_leafdepthvariance, hist_normcherry, hist_Jindex, hist_SNI, 
-                  hist_Sshape, hist_APP, hist_normILnumber, hist_normaverageladder,  hist_maxdepth, 
-                  hist_maxwidth, hist_maxdiffwidth, hist_meandepth, hist_maxheight,
-                  hist_normpitchforks, hist_rootedquartet, hist_stairs, hist_stairs2, hist_longestpendant,
-                  hist_shortestpendant, hist_stemminess)
+zhist_all <- list(hist_APP, hist_AvgLeafDepth, hist_B1, hist_B2, hist_CollessLikeExpMDM, hist_I2, hist_Jindex, hist_leafdepthvariance, hist_longestpendant, hist_maxdepth, 
+                  hist_maxdiffwidth, hist_maxwidth, hist_maxheight, hist_meandepth, hist_MeanI, hist_MedianI, hist_normaverageladder, 
+                  hist_normcherry, hist_NormColless, hist_normILnumber, hist_normpitchforks, hist_NormSackin, hist_rootedquartet, hist_shortestpendant, hist_SNI, 
+                  hist_Sshape, hist_stairs, hist_stairs2, hist_stemminess, hist_TotalCophenetic, hist_TotalI)
 ggsave(file="AllZscorePlots_Scenario3.pdf", marrangeGrob(grobs = zhist_all, nrow=4, ncol=3, top = "Z-scores for Scenario 3 Indices; Dotted Lines Denote the Sample Mean"), width = 9, height = 12,
        device = "pdf")
 
@@ -811,12 +807,10 @@ hist_shortestpendant <- ggplot(zscoresdf_yule, aes(x=shortestpendant)) + labs(y 
 hist_stemminess <- ggplot(zscoresdf_yule, aes(x=stemminess)) + labs(y = "Count", x = "Z-score", title="Non-Cumulative Stemminess") +  geom_histogram(aes(y=..count..),binwidth=0.1, color="#33638D", fill="#33638D") + xlim(-10, 10) + geom_vline(aes(xintercept=mean(stemminess)), color="#20A486", linetype="dashed", size=1)
 
 
-zhist_all <- list(hist_TotalI, hist_MeanI, hist_MedianI, hist_NormColless, hist_CollessLikeExpMDM, hist_I2, hist_NormSackin, 
-                  hist_TotalCophenetic, hist_B1, hist_B2, hist_AvgLeafDepth, hist_leafdepthvariance, hist_normcherry, hist_Jindex, hist_SNI, 
-                  hist_Sshape, hist_APP, hist_normILnumber, hist_normaverageladder,  hist_maxdepth, 
-                  hist_maxwidth, hist_maxdiffwidth, hist_meandepth, hist_maxheight,
-                  hist_normpitchforks, hist_rootedquartet, hist_stairs, hist_stairs2, hist_longestpendant,
-                  hist_shortestpendant, hist_stemminess)
+zhist_all <- list(hist_APP, hist_AvgLeafDepth, hist_B1, hist_B2, hist_CollessLikeExpMDM, hist_I2, hist_Jindex, hist_leafdepthvariance, hist_longestpendant, hist_maxdepth, 
+                  hist_maxdiffwidth, hist_maxwidth, hist_maxheight, hist_meandepth, hist_MeanI, hist_MedianI, hist_normaverageladder, 
+                  hist_normcherry, hist_NormColless, hist_normILnumber, hist_normpitchforks, hist_NormSackin, hist_rootedquartet, hist_shortestpendant, hist_SNI, 
+                  hist_Sshape, hist_stairs, hist_stairs2, hist_stemminess, hist_TotalCophenetic, hist_TotalI)
 ggsave(file="AllZscorePlots_Scenario4.pdf", marrangeGrob(grobs = zhist_all, nrow=4, ncol=3, top = "Z-scores for Scenario 4 Indices; Dotted Lines Denote the Sample Mean"), width = 9, height = 12,
        device = "pdf")
 
